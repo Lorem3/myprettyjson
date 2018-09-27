@@ -2,7 +2,7 @@
   "description": "myPrettyJson",
   "displayName": "myPrettyJson",
   "main": "./extension",
-  "name": "my-pretty-json",
+  "name": "myprettyjson",
   "publisher": "liw",
   "version": "0.6.0",
   "activationEvents": [

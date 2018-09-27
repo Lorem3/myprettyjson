@@ -1,0 +1,285 @@
+{
+
+"command": {
+		"prefix": "command",
+		"body": [
+			"{ \"command\":\"${1:cmd}\", \"in\":\"$2\", \"out\":\"$3\"},\n$4"
+		],
+		"description": "通用 command "
+	},
+"json_to_string": {
+		"prefix": "json_to_string",
+		"body": [
+			"{ \"command\":\"json_to_string\", \"in\":\"$1\", \"out\":\"$2\"},\n$3"
+		],
+		"description": "json_to_string"
+	},
+
+"var_to_var": {
+		"prefix": "var_to_var",
+		"body": [
+			"{ \"command\":\"var_to_var\", \"in\":\"$1\", \"out\":\"$2\"},\n$3"
+		],
+		"description": "var_to_var"
+	}
+,
+
+"debug": {
+		"prefix": "debug",
+		"body": [
+			"{ \"command\":\"debug\", \"in\":\"$1\"},\n$3"
+		],
+		"description": "debug"
+	}
+,
+ 
+
+
+"stream_to_json": {
+		"prefix": "stream_to_json",
+		"body": [
+			"{ \"command\":\"stream_to_json\", \"in\":\"${1:_receiveData}\", \"out\":\"${2:tmpJson}\"},\n$3"
+		],
+		"description": "stream_to_json"
+	},
+"include": {
+		"prefix": "include",
+		"body": [
+			"{ \"command\":\"include\", \"name\":\"${1:name}\"},\n"
+		],
+		"description": "include"
+	},
+"if": {
+		"prefix": "if",
+		"body": [
+			"{ \"command\":\"if\", \"if\":[\"${1:obj1}\", \"${2:=}\", \"@${3:obj2}\"] ,\"rules\":[$4] , \"else_rules\":[$5]},\n"
+		],
+		"description": "普通的 if 常数前面加@"
+	},
+"if_count": {
+		"prefix": "ifc",
+		"body": [
+			"{ \"command\":\"if\", \"if\":[\"${1:obj1}\", \"${2:=}\", \"@${3:obj2}\",\"${count}\"]  , \"rules\":[$4] , \"else_rules\":[$5]},\n"
+		],
+		"description": "类型为 length / count 的 if,常数前面加@"
+	},
+"if_int": {
+		"prefix": "ifi",
+		"body": [
+			"{ \"command\":\"if\", \"if\":[\"${1:obj1}\", \"${2:=}\", \"@${3:obj2}\" , \"int\"]  , \"rules\":[$5] , \"else_rules\":[$6]},\n"
+		],
+		"description": "类型为 int  的 if 常数前面加@"
+	},
+"string_to_json": {
+		"prefix": "string_to_json",
+		"body": [
+			"{ \"command\":\"string_to_json\", \"in\":\"$1\", \"out\":\"$2\"},\n$3"
+		],
+		"description": "string_to_json"
+	},
+"array_to_string": {
+		"prefix": "array_to_string",
+		"body": [
+			"{ \"command\":\"array_to_string\", \"in\":${1:keyOrArray}, \"out\":\"${2:outString}\",\"join\":\"$3\"},\n$0"
+		],
+		"description": "array_to_string"
+	},
+"string_to_array": {
+		"prefix": "string_to_array",
+		"body": [
+			"{ \"command\":\"string_to_array\", \"in\":${1:stringKey}, \"out\":\"${2:outString}\",\"split\":\"$4:\"},\n$0"
+		],
+		"description": "string_to_array"
+	},
+"string_replace":{
+	"prefix": "string_replace",
+		"body": [
+			"{ \"command\":\"string_replace\", \"in\":${1:stringKey}, \"new\":\"${2:new}\", \"old\":\"${3:old}\", \"out\":\"${4:outString}\"},\n$0"
+		],
+		"description": "string_replace"
+},
+"regular_text":{
+	"prefix": "regular_text",
+		"body": [
+			"{ \"command\":\"regular_text\", \"in\":\"${1:stringKey}\", \"out\":\"${2:outString}\",\"regular\":\"${3:regular}\"},\n$0"
+		],
+		"description": "regular_text"
+},
+
+"array_loop_parse":{
+	"prefix": "array_loop_parse",
+		"body": [
+			"{ \"command\":\"array_loop_parse\",",
+			"\t\"in\":\"${1:inArray}\",",
+			"\t\"out\":\"${2:outArray}\",",
+			"\t\"rules\":[",
+			"\t$3",
+			"\t]\n},\n"
+		],
+		"description": "array_loop_parse"
+},
+
+
+"action":{
+	"prefix": "action",
+		"body": [
+			"{ \"action\":\"${1:aciotnName}\"  , \"file\":\"${2:fileName}\", \"input_parserules\":[$3]},\n"
+		],
+		"description": "action"
+},
+
+
+"client_checklogin":{
+	"prefix": "client_checklogin",
+		"body": [
+				"{ \"action\":\"client_checklogin\" , \"file\":\"client_login\"},\n"
+		],
+		"description": "client_checklogin"
+},
+
+"session.clientIsLogin":{
+	"prefix": "session.clientIsLogin",
+		"body": [
+			"session.clientIsLogin"
+		],
+		"description": "session.clientIsLogin"
+},
+ 
+"result.source":{
+	"prefix": "result.source",
+		"body": [
+			"result.source"
+		],
+		"description": "需要加密的参数"
+},
+
+"__CHECK_CODE__":{
+	"prefix": "__CHECK_CODE__",
+		"body": [
+			"__CHECK_CODE__"
+		]
+},
+
+"__DEVICE_NO__":{
+	"prefix": "__DEVICE_NO__",
+		"body": [
+			"__DEVICE_NO__"
+		],
+		"description": "__DEVICE_NO__"
+},
+
+"__TIMESTR__":{
+	"prefix": "__TIMESTR__",
+		"body": [
+			"__TIMESTR__"
+		],
+		"description": "__TIMESTR__"
+},
+
+"result.optype":{
+	"prefix": "result.optype",
+		"body": [
+			"result.optype"
+		],
+		"description": "optype"
+},
+"result.client_DecResultJson":{
+	"prefix": "result.client_DecResultJson",
+		"body": [
+			"result.client_DecResultJson"
+		],
+		"description": "解密结果"
+},
+
+
+"string_from_format":{
+	"prefix": "string_from_format",
+		"body": [
+			"{",
+			"\t\"command\":\"string_from_format\",",
+			"\t\"out\":\"${1:outString}\",",
+			"\t\"in\":[\"${2:fomatString}\",${3:...}]",
+			"},\n$4"
+		],
+		"description": "string_from_format"
+},
+  
+"_receiveData":{
+	"prefix": "_receiveData",
+		"body": [
+			"_receiveData"
+		],
+		"description": "_receiveData"
+},
+"add_cookies":{
+	"prefix": "add_cookies",
+		"body": [
+			"{ \"command\":\"add_cookies\", \"domain\":\"${1:@a.cn}\", \"in\":\"${2:@123}\", \"name\":\"${3:@name}\", \"path\":\"${4:@/}\" ${5:,\"fitcdn\":\"1\"}},"
+		],
+		"description": "date_text"
+},
+
+"date_text":{
+	"prefix": "date_text",
+		"body": [
+			"{ \"command\":\"date_text\", \"add\":\"$3\", \"in\":\"${1:date}\", \"infmt\":\"${2:yyyy-MM-dd}\", \"out\":\"${outdate}\", \"outfmt\":\"${outfmt}\"},\n$1"
+		],
+		"description": "date_text"
+},
+
+"localKey":{
+	"prefix": "localKey",
+		"body": [
+			"{ \"localKey\":\"${1:localKey}\", \"httpKey\":\"${2:httpKey}\" , \"default\":\"${3:defaul}\"},\n$4"
+		],
+		"description": "localKey httpkey default"
+},
+"storage_get":{
+	"prefix": "storage_get",
+		"body": [
+			"{ \"command\":\"storage_get\", \"out\":\"${3:out}\",\"key\":\"@${2:key}\"},\n$4"
+		],
+		"description": "storage_get"
+},
+"storage_set":{
+	"prefix": "storage_set",
+		"body": [
+			"{ \"command\":\"storage_set\", \"in\":\"${1:in}\", \"key\":\"@${2:key}\"},\n$3"
+		],
+		"description": "storage_set"
+},
+"storage_remove":{
+	"prefix": "storage_remove",
+		"body": [
+			"{ \"command\":\"storage_remove\",  \"key\":\"@${2:key}\"},\n$3"
+		],
+		"description": "storage_remove"
+},
+"substring":{
+	"prefix": "substring",
+		"body": [
+			"{ \"command\":\"var_to_var\", \"in\":\"$1\", \"out\":\"$2\",\"range\":\"${3:0,3}\",\n$4"
+		],
+		"description": "substring"
+},
+
+"urlStep":{
+	"prefix": "urlStep",
+		"body": [
+			"{",
+	"${1:\t\"HttpMethod\":\"Post\",}",
+	"${2:\t\"referer\":\"${3:referer}\",}",
+	"${4:\t\"url\":\"${5:url}\",}",
+	"${6:\t\"waitDesc\":\"${7:...}\",}",
+	"${8:\t\"first_parserules\":[$9],}",
+	"${10:\t\"input_parserules\":[$11],}",
+	"${12:\t\"params\":[$13],}",
+	"${14:\t\"result_parserules\":[$15]}",
+	"},\n"
+		],
+	"description": "基本的 url 请求"
+}
+
+	
+
+}
