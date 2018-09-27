@@ -1,0 +1,66 @@
+{
+  "description": "myPrettyJson",
+  "displayName": "myPrettyJson",
+  "main": "./extension",
+  "name": "my-pretty-json",
+  "publisher": "liw",
+  "version": "0.5.0",
+  "activationEvents": [
+    "onCommand:extension.myPrettyJson",
+    "onCommand:extension.myUglyJson"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.myPrettyJson",
+        "title": "myPrettyJson"
+      },
+      {
+        "command": "extension.myUglyJson",
+        "title": "myUglyJson"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.myPrettyJson",
+        "key": "shift+ctrl+j",
+        "mac": "shift+cmd+j",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.myUglyJson",
+        "key": "shift+ctrl+u",
+        "mac": "shift+cmd+u",
+        "when": "editorTextFocus"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "json",
+        "path": "./snippet.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.21",
+    "eslint": "^4.11.0",
+    "@types/node": "^8.10.25",
+    "@types/mocha": "^2.2.42"
+  },
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "__metadata": {
+    "id": "5a05294e-39ab-44ea-a9a5-8efe23516391",
+    "publisherId": "16a55533-5c80-4ccc-81e9-747b025db664",
+    "publisherDisplayName": "liw"
+  }
+}
