@@ -4,7 +4,7 @@
   "main": "./extension",
   "name": "myprettyjson",
   "publisher": "liw",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson"
@@ -58,9 +58,7 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "node ./node_modules/vscode/bin/test"
   },
-  "repository":{
-    
-  },
+  "repository": {},
   "__metadata": {
     "id": "5a05294e-39ab-44ea-a9a5-8efe23516391",
     "publisherId": "16a55533-5c80-4ccc-81e9-747b025db664",
