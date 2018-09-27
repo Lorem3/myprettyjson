@@ -4,7 +4,7 @@
   "main": "./extension",
   "name": "my-pretty-json",
   "publisher": "liw",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson"
