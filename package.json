@@ -3,6 +3,7 @@
   "displayName": "myPrettyJson",
   "main": "./extension",
   "name": "myprettyjson",
+  "icon":"icon.png",
   "publisher": "liw",
   "version": "0.9.1",
   "activationEvents": [
