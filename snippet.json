@@ -258,7 +258,7 @@
 "substring":{
 	"prefix": "substring",
 		"body": [
-			"{ \"command\":\"substring\", \"in\":\"$1\", \"out\":\"$2\",\"range\":\"${3:0,3}\",\n$4"
+			"{ \"command\":\"substring\", \"in\":\"$1\", \"out\":\"$2\",\"range\":\"${3:0,3}\"},\n$4"
 		],
 		"description": "substring"
 },
