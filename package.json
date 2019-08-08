@@ -3,9 +3,9 @@
   "displayName": "myPrettyJson",
   "main": "./extension",
   "name": "myprettyjson",
-  "icon":"icon.png",
+  "icon": "icon.png",
   "publisher": "liw",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson"
