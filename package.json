@@ -5,7 +5,7 @@
   "name": "myprettyjson",
   "icon": "icon.png",
   "publisher": "liw",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson"
