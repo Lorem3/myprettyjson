@@ -8,7 +8,7 @@ var vscode = require('vscode');
 function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "helloworld" is now active!');
+    console.log('Congratulations, your extension "MyPrettyJson" is now active!');
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
@@ -139,7 +139,7 @@ function countLength(params, max) {
         return str.length + 2;
     }
     else if (isBoolean(params)) {
-        return 1; //"1" or "0"
+        return params ? 4 : 5; //"1" or "0"
     }
     else if (isNumber(params)) {
         return ("" + params).length + 2;
@@ -200,10 +200,10 @@ function stringFromSingleLineObject(obj) {
         return "\"" + convertToJsonString(obj) + "\"";
     }
     else if (isNumber(obj)) {
-        return "\"" + obj + "\"";
+        return  `${obj}`
     }
     else if (isBoolean(obj)) {
-        return "\"" + (obj ? "1" : "0") + "\"";
+        return `${obj}`
     }
     else if (isArray(obj)) {
         var result = "[";
@@ -220,7 +220,7 @@ function stringFromSingleLineObject(obj) {
         return result;
     }
     else if (isNull(obj) || isUndefinded(obj)) {
-        return "\"\"";
+        return  `${obj}`;// "\"\"";
     }
     else {
         var allPropertityesNames = Object.getOwnPropertyNames(obj);
