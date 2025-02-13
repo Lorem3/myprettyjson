@@ -5,7 +5,7 @@
   "name": "myprettyjson",
   "icon": "icon.png",
   "publisher": "Rig03",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson",
@@ -75,6 +75,6 @@
   "__metadata": {
     "id": "5a05294e-39ab-44ea-a9a5-8efe23516391",
     "publisherId": "16a55533-5c80-4ccc-81e9-747b025db664",
-    "publisherDisplayName": "liw"
+    "publisherDisplayName": "Rig03"
   }
 }
