@@ -3,6 +3,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
+var RT = require("./readable")
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
@@ -80,6 +81,41 @@ function activate(context) {
         }
     });
     context.subscriptions.push(disposable2);
+
+
+    var disposable3 = vscode.commands.registerCommand('extension.myReadableJson', function(){
+        var e = vscode.window.activeTextEditor;
+        if (e) {
+            e.edit(function (eb) {
+                {
+                    var maxInt = 9999999999999;
+                    var sp = new vscode.Position(0, 0);
+                    var ep = new vscode.Position(maxInt, maxInt);
+                    var rg = new vscode.Range(sp, ep);
+                    var jsonstring = e.document.getText(rg);
+                    var jsonObj = null;
+                    try {
+                        jsonObj = JSON.parse(jsonstring);
+                    }
+                    catch (e) {
+                        console.log(e);
+                        jsonObj = null;
+                    }
+                    if (jsonObj == null) {
+                        vscode.window.showErrorMessage('the file is NOT json');
+                    }
+                    else {
+                        var result = RT.deepConvert(jsonstring)
+                        if (result != null) {
+                            eb.replace(rg, JSON.stringify(result,null,4));
+                        }
+                    }
+                }
+            });
+        }
+    });
+    context.subscriptions.push(disposable3);
+
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated

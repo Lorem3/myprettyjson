@@ -1,0 +1,108 @@
+"use strict";
+
+const suffix = "[⭕️]";
+function deepConvert(obj) {
+  if (obj === null) return null;
+  if (obj === undefined) return undefined;
+  if (typeof obj == "string") {
+    return InnerStr2Obj(obj, {});
+  }
+  if (Array.isArray(obj)) {
+    let arr = obj;
+    let arrOut = [];
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      if (typeof element == "string") {
+        let o = {};
+        let v = InnerStr2Obj(element, o);
+        if (o.change == 1) {
+          arrOut.push(suffix);
+        }
+        arrOut.push(v);
+      } else {
+        arrOut.push(deepConvert(element));
+      }
+    }
+    return arrOut;
+  } else if (typeof obj == "object") {
+    let objOut = {};
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        const element = obj[key];
+
+        if (typeof element == "string") {
+          let o = {};
+          let v = InnerStr2Obj(element, o);
+          if (o.change == 1) {
+            objOut[key] = undefined;
+            objOut[key + suffix] = v;
+          } else {
+            objOut[key] = v;
+          }
+        } else {
+          objOut[key] = deepConvert(element);
+        }
+      }
+    }
+
+    return objOut;
+  }
+
+  return obj;
+}
+function InnerStr2Obj(str, outV) {
+  if (str === null) return null;
+  if (str === undefined) return undefined;
+  if (str.substring(0, 1) == "{") {
+    try {
+      let obj = JSON.parse(str);
+      outV.change = 1;
+      for (const key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          const element = obj[key];
+
+          if (typeof element == "string") {
+            let o = {};
+            let v = InnerStr2Obj(element, o);
+            if (o.change == 1) {
+              obj[key] = undefined;
+              obj[key + suffix] = v;
+            } else {
+              obj[key] = v;
+            }
+          } else {
+            obj[key] = deepConvert(element);
+          }
+        }
+      }
+
+      return obj;
+    } catch (error) {}
+  } else if (str.substring(0, 1) == "[") {
+    try {
+      let arr = JSON.parse(str);
+      outV.change = 1;
+      let arrOut = [];
+      for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        console.log(typeof element);
+        if (typeof element == "string") {
+          let o = {};
+          let v = InnerStr2Obj(element, { o });
+          if (o.change == 1) {
+            arrOut.push(suffix);
+          }
+          arrOut.push(v);
+        } else {
+          arrOut.push(element);
+        }
+      }
+
+      return arrOut;
+    } catch (error) {}
+  }
+
+  return str;
+}
+
+module.exports = {deepConvert}
