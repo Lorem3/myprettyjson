@@ -65,7 +65,7 @@ function InnerStr2Obj(str, outV) {
             let o = {};
             let v = InnerStr2Obj(element, o);
             if (o.change == 1) {
-              obj[key] = undefined;
+              delete obj[key] 
               obj[key + suffix] = v;
             } else {
               obj[key] = v;
@@ -85,7 +85,6 @@ function InnerStr2Obj(str, outV) {
       let arrOut = [];
       for (let i = 0; i < arr.length; i++) {
         const element = arr[i];
-        console.log(typeof element);
         if (typeof element == "string") {
           let o = {};
           let v = InnerStr2Obj(element, { o });
@@ -105,4 +104,49 @@ function InnerStr2Obj(str, outV) {
   return str;
 }
 
-module.exports = {deepConvert}
+
+function deepConvertBack(obj){
+  let t = typeof obj
+  
+  if(Array.isArray(obj)){
+    let flg = 0
+    let rArr = []
+    for (let index = 0; index < obj.length; index++) {
+      const element = obj[index];
+      if (element == suffix) {
+        flg = 1
+        continue;
+      }else{
+        if (flg == 1) {
+           let e  = deepConvertBack(element)
+           rArr.push(JSON.stringify(e))
+        }else{
+          rArr.push(deepConvertBack(element))
+        }
+
+        flg = 0;
+      }
+    }
+    return rArr
+  }else if ( t == 'object') {
+    let r = {}
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        const element = obj[key];
+        if (key.indexOf(suffix) > -1) {
+          let k = key.replace(suffix, "")
+          let objItem  = deepConvertBack(element);
+          r[k] = JSON.stringify(objItem)
+        }
+        else {
+          r[key] = deepConvertBack(element);
+        }
+      }
+    }
+    return r 
+  }else{
+    return obj
+  }
+}
+
+module.exports = {deepConvert,deepConvertBack}

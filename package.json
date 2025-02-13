@@ -5,11 +5,13 @@
   "name": "myprettyjson",
   "icon": "icon.png",
   "publisher": "Rig03",
-  "version": "1.3.1",
+  "version": "1.3.3",
   "activationEvents": [
     "onCommand:extension.myPrettyJson",
     "onCommand:extension.myUglyJson",
-    "onCommand:extension.myReadableJson"
+    "onCommand:extension.myReadableJson",
+    "onCommand:extension.myReadableJsonReverse"
+    
     
   ],
   "categories": [
@@ -28,6 +30,10 @@
       {
         "command": "extension.myReadableJson",
         "title": "myReadableJson"
+      },
+      {
+        "command": "extension.myReadableJsonReverse",
+        "title": "myReadableJsonReverse"
       }
     ],
     "keybindings": [
@@ -47,6 +53,12 @@
         "command": "extension.myReadableJson",
         "key": "shift+ctrl+r",
         "mac": "shift+cmd+r",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.myReadableJsonReverse",
+        "key": "shift+ctrl+e",
+        "mac": "shift+cmd+e",
         "when": "editorTextFocus"
       }
     ],

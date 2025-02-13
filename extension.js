@@ -116,6 +116,39 @@ function activate(context) {
     });
     context.subscriptions.push(disposable3);
 
+    var disposable4 = vscode.commands.registerCommand('extension.myReadableJsonReverse', function(){
+        var e = vscode.window.activeTextEditor;
+        if (e) {
+            e.edit(function (eb) {
+                {
+                    var maxInt = 9999999999999;
+                    var sp = new vscode.Position(0, 0);
+                    var ep = new vscode.Position(maxInt, maxInt);
+                    var rg = new vscode.Range(sp, ep);
+                    var jsonstring = e.document.getText(rg);
+                    var jsonObj = null;
+                    try {
+                        jsonObj = JSON.parse(jsonstring);
+                    }
+                    catch (e) {
+                        console.log(e);
+                        jsonObj = null;
+                    }
+                    if (jsonObj == null) {
+                        vscode.window.showErrorMessage('the file is NOT json');
+                    }
+                    else {
+                        var result = RT.deepConvertBack(jsonObj)
+                        if (result != null) {
+                            eb.replace(rg, JSON.stringify(result,null,4));
+                        }
+                    }
+                }
+            });
+        }
+    });
+    context.subscriptions.push(disposable4);
+
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated
