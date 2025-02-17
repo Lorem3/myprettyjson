@@ -105,7 +105,7 @@ function activate(context) {
                         vscode.window.showErrorMessage('the file is NOT json');
                     }
                     else {
-                        var result = RT.deepConvert(jsonstring)
+                        var result = RT.deepConvert(jsonObj)
                         if (result != null) {
                             eb.replace(rg, JSON.stringify(result,null,4));
                         }
