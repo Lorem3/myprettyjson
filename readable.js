@@ -1,6 +1,15 @@
 "use strict";
 
 const suffix = "[⭕️]";
+if (process.env.JQ3_SUFFIX64) {
+
+  try {
+    const decoded = Buffer.from(process.env.JQ3_SUFFIX64, 'base64').toString();
+    suffix = decoded;
+  } catch (err) {
+    console.error('Failed to decode JQ3_SUFFIX64:', err);
+  }
+}
 function deepConvert(obj) {
   if (obj === null) return null;
   if (obj === undefined) return undefined;
