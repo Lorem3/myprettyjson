@@ -1,6 +1,6 @@
 "use strict";
 
-const suffix = "[⭕️]";
+var suffix = "[⭕️]";
 if (process.env.JQ3_SUFFIX64) {
 
   try {
